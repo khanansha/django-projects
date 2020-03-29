@@ -1,0 +1,127 @@
+<!doctype html>
+  {% extends 'hub/basic.html' %}
+
+{% block title%} {% endblock %}
+{% block body %} 
+{% load static %}
+<main role="main">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      {% for i in range %}
+      <li data-target="#myCarousel" data-slide-to="{{i}}"></li>
+       {% endfor %}
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        {% comment %} <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg> {% endcomment %}
+        <img src="/media/{{product.0.banner}}" class="bd-placeholder-img" />
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1> {{product.0.title}}</h1>
+            <p> {{product.0.chead}}</p>
+          
+          </div>
+        </div> 
+      </div>
+       {% for i in product|slice:"1:"%}
+
+      <div class="carousel-item">
+  
+         {% comment %}<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>{% endcomment %}
+         <img src='/media/{{i.banner}}' class="bd-placeholder-img" />
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>{{i.title}}</h1>
+            <p>{{i.chead}}</p>
+          </div>
+        </div>
+      </div>
+     {% if forloop.counter|divisibleby:2 and forloop.counter > 0 and not forloop.last %}
+      </div>
+
+      <div class="carousel-item">
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+
+     <!-- left and right controls for the slide -->
+    
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  
+
+    <!-- Three columns of text below the carousel -->
+    {% comment %}
+    <div class="row">
+      {% for item in post %}
+      <div class="col-lg-4">
+       <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <img src="/media/{{item.image}}" class="bd-placeholder-img" />
+        <h2>{{item.title}}</h2>
+        <p>{{item.chead}}</p>
+        {% comment%}<p><a class="btn btn-secondary" href="blogpost/{{post.post_id}}" role="button">View details &raquo;</a></p>
+      </div>
+       {% endfor %}
+       <!-- /.col-lg-4 -->
+      
+    <!-- /.row -->
+    </div>
+
+</div>
+{% endcomment %}
+    
+
+    <!-- START THE FEATURETTES -->
+
+
+    <!-- /END THE FEATURETTES -->
+
+  <!-- /.container -->
+
+
+  <!-- FOOTER -->
+<div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+    {% for item in myposts %}
+
+      <div class="col-lg-4">
+        {% comment %}
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>{% endcomment %}
+         <img src="/media/{{item.image}}" class="bd-placeholder-img" width="200" height="250"/>
+
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        <p><a class="btn btn-secondary" href=""blogpost/{{item.post_id}}"" role="button">View details &raquo;</a></p>
+      </div>
+ {% endfor %}
+     </div><!-- /.col-lg-4 -->
+    
+      </div>
+
+           
+
+</main>
+<script src="{%static 'hub/jquery-3.4.1.slim.min.js' %}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="{%static 'hub/bootstrap.bundle.min.js' %}" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script></body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2> list of  {{title}} </h2>
+    {% if questions %}
+        <u1>
+            {% for question in questions %}
+            <li>
+                <a href="/polls/{{question.id}}/details/"> {{question.title}}</a>
+            </li>
+                
+            {% endfor %}
+        </u1>
+    {% else %}
+        <p> there is no questions are available</p>
+
+    {% endif %}    
+
+{% endblock content %}
